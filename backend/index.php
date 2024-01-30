@@ -2,7 +2,7 @@
 $is_production = getenv('IS_PROD');
 
 // Set your server key (Note: Server key for sandbox and production mode are different)
-$server_key = $is_production ? getenv('ACCESS_KEY_PROD') : getenv('ACCESS_KEY_SANDBOX');
+$server_key = $is_production == 'true' ? getenv('ACCESS_KEY_PROD') : getenv('ACCESS_KEY_SANDBOX');
 // Set true for production, set false for sandbox
 
 $api_url = $is_production == 'true' ? 
