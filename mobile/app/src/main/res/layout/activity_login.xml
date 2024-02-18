@@ -71,6 +71,18 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            android:id="@+id/tv_kurang"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textColor="#ff0000"
+            android:text="Password kurang dari 8 karakter" />
+
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:textSize="14sp"
