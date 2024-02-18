@@ -1,6 +1,7 @@
 package com.example.tokoonline.view.fragment
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -58,7 +59,15 @@ class HomeFragment : BaseFragment(), OnItemClick {
         binding.rvProdukTerlaris.apply{
             adapter = productTerlarisAdapter
         }
+        binding.btnExplore.setOnClickListener {
+            val url = "https://batama-app-4e0f13b40b6e.herokuapp.com"
+            val i = Intent(Intent.ACTION_VIEW)
+            // Menggunakan requireContext() sebagai konteks Fragment
 
+            i.data = Uri.parse(url)
+
+            startActivity(i)
+        }
         productAdapter = AdapterProduk(this)
         binding.rvProduk.apply {
             adapter = productAdapter
