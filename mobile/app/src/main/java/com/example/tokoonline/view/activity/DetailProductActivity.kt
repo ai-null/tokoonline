@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import androidx.activity.viewModels
 import androidx.core.net.toUri
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.tokoonline.R
@@ -20,6 +21,7 @@ import com.example.tokoonline.data.repository.firebase.KeranjangRepository
 import com.example.tokoonline.databinding.ActivityDetailProdukBinding
 import com.example.tokoonline.databinding.ProductOrderNowBottomSheetBinding
 import com.example.tokoonline.view.viewmodel.DetailProdukViewModel
+import com.example.tokoonline.view.viewmodel.TokoViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -33,6 +35,7 @@ class DetailProductActivity : BaseActivity() {
     }
 
     private val vm: DetailProdukViewModel by viewModels()
+    private lateinit var  viewModelToko : TokoViewModel
 
     private val dialog: BottomSheetDialog by lazy {
         BottomSheetDialog(
@@ -59,6 +62,7 @@ class DetailProductActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailProdukBinding.inflate(layoutInflater)
         keranjangRepository = KeranjangRepository(this)
+        viewModelToko = ViewModelProvider(this).get(TokoViewModel::class.java)
 
         binding.toolbar.binding.leftIcon.setOnClickListener {
             finish()
@@ -134,6 +138,21 @@ class DetailProductActivity : BaseActivity() {
                     })
             }
         }
+
+        val idToko = produkData?.idToko.toString()
+        val idSeller = produkData?.idSeller.toString()
+
+        viewModelToko.getTokoById(idToko, idSeller){ tokoData ->
+            tvNamaToko.setText(tokoData?.nama.toString())
+            // tvGambarToko to be implemented
+            viewToko.setOnClickListener {
+                val intent = Intent(this@DetailProductActivity, ProdukViewByTokoActivity::class.java)
+                intent.putExtra("tokoID", idToko )
+                intent.putExtra("sellerID", idSeller)
+                startActivity(intent)
+            }
+        }
+
         btnBeli.setOnClickListener {
             showUpdateStatusDialog()
         }

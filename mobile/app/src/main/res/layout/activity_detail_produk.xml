@@ -189,6 +189,47 @@
                         tools:text="0811115671" />
                 </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="@dimen/medium_space"
+                    android:background="#ECECEC" />
+
+                <TextView
+                    style="@style/body_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/medium_space"
+                    android:layout_marginTop="@dimen/medium_space"
+                    android:text="Toko" />
+
+                <LinearLayout
+                    android:id="@+id/view_toko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/medium_space"
+                    android:paddingTop="@dimen/small_space_8"
+                    android:paddingBottom="@dimen/small_space_10">
+
+                    <ImageView
+                        android:id="@+id/tv_gambar_toko"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_store" />
+
+                    <TextView
+                        android:id="@+id/tv_nama_toko"
+                        style="@style/heading_14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/small_space_8"
+                        android:text="-"
+                        tools:text="Toko Toko" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </ScrollView>
