@@ -102,7 +102,7 @@ class DetailProductActivity : BaseActivity() {
         val stokProduk = produkData?.stok
 
 
-        if (stokProduk == null || stokProduk == 0) {
+        if (stokProduk == null || stokProduk <= 0) {
             btnBeli.isEnabled = false
             btnBeli.setOnClickListener {
                 showToast("Stok produk tidak tersedia. Silahkan hubungi seller")
