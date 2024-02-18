@@ -47,7 +47,7 @@ class ProdukViewByTokoActivity : BaseActivity(), OnItemClick {
 
         getData()
 
-        binding.btnBack.setOnClickListener {
+        binding.navbar.binding.leftIcon.setOnClickListener {
             finish()
         }
     }
