@@ -130,6 +130,9 @@ class TokoProfileActivity : BaseActivity() {
                         binding.tvAlamatToko.text = alamatToko.alamat
                     } else {
                         showToast("Gagal mengambil Alamat Toko")
+                        viewModelAlamat.getAlamatDefault(userUid){alamat ->
+                            binding.tvAlamatToko.text = alamat?.alamat
+                        }
                     }
                 }
                 binding.optionProduk.setOnClickListener{goToProdukSaya(tokoID)}
