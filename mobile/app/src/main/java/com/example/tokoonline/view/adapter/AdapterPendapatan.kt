@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tokoonline.R
+import com.example.tokoonline.core.util.OnItemClick
 import com.example.tokoonline.data.model.firebase.Transaction
 import com.example.tokoonline.data.repository.firebase.ProdukTransactionRepository
 import com.example.tokoonline.databinding.ItemTableBinding
@@ -12,7 +13,9 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
 
-class AdapterPendapatan : RecyclerView.Adapter<AdapterPendapatan.ViewHolder>() {
+class AdapterPendapatan(
+    private val onClickListener: OnItemClick
+) : RecyclerView.Adapter<AdapterPendapatan.ViewHolder>() {
     private val produkTransactionRepository = ProdukTransactionRepository.getInstance()
 
     private val list: MutableList<Transaction> = mutableListOf()
@@ -43,6 +46,10 @@ class AdapterPendapatan : RecyclerView.Adapter<AdapterPendapatan.ViewHolder>() {
             binding.nama.text = transaction.produkId
             binding.status.text = transaction.status
             binding.tanggal.text = formatString(transaction.createdAt)
+
+            binding.btnAksi.setOnClickListener {
+                onClickListener.onClick(transaction, position)
+            }
         }
 
         private fun formatString(createdAt: String): String {

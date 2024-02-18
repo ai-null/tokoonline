@@ -1,11 +1,13 @@
 package com.example.tokoonline.view.activity.toko.pendapatan
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.tokoonline.core.base.BaseActivity
+import com.example.tokoonline.core.util.OnItemClick
 import com.example.tokoonline.core.util.moneyFormatter
+import com.example.tokoonline.data.model.firebase.Transaction
 import com.example.tokoonline.data.repository.firebase.TransactionRepository
 import com.example.tokoonline.databinding.ActivityPendapatan2Binding
+import com.example.tokoonline.view.activity.DetailPesananTokoActivity
 import com.example.tokoonline.view.adapter.AdapterPendapatan
 
 class PendapatanActivity : BaseActivity() {
@@ -14,7 +16,17 @@ class PendapatanActivity : BaseActivity() {
 
     private lateinit var binding: ActivityPendapatan2Binding
     private val adapter: AdapterPendapatan by lazy {
-        AdapterPendapatan()
+        AdapterPendapatan(onClickListener = object : OnItemClick {
+            override fun onClick(data: Any, position: Int) {
+                val item = data as Transaction
+                startActivity(
+                    DetailPesananTokoActivity.createIntent(
+                        context = this@PendapatanActivity,
+                        item
+                    )
+                )
+            }
+        })
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,16 +1,12 @@
 package com.example.tokoonline.data.repository.firebase
 
 import com.example.tokoonline.core.constanst.Constant
-import com.example.tokoonline.core.util.multiValue
-import com.example.tokoonline.core.util.multiValueListenerFlow
-import com.example.tokoonline.data.model.firebase.Produk
 import com.example.tokoonline.data.model.firebase.ProdukKeranjang
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.flow.collect
 
 class ProdukTransactionRepository {
     private val databaseReference: DatabaseReference =
@@ -46,10 +42,16 @@ class ProdukTransactionRepository {
 
     fun getProdukById(produkId: String, onComplete: (data: List<ProdukKeranjang?>) -> Unit) {
         databaseReference.child(produkId).addValueEventListener(object : ValueEventListener {
+            var snapShot: List<DataSnapshot>? = null
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                onComplete(dataSnapshot.children.map { snapshot ->
-                    snapshot.getValue(ProdukKeranjang::class.java)
-                })
+                try {
+                    onComplete(dataSnapshot.children.map { snapshot ->
+                        snapShot = dataSnapshot.children.toList()
+                        snapshot.getValue(ProdukKeranjang::class.java)
+                    })
+                } catch (e: Exception) {
+                    onComplete(emptyList())
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

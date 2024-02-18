@@ -1,20 +1,13 @@
 package com.example.tokoonline.view.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tokoonline.core.base.BaseActivity
 import com.example.tokoonline.core.util.OnItemClick
 import com.example.tokoonline.data.model.firebase.Produk
-import com.example.tokoonline.data.model.firebase.Toko
-import com.example.tokoonline.databinding.ActivityProdukViewAllBinding
 import com.example.tokoonline.databinding.ActivityProdukViewByTokoBinding
-import com.example.tokoonline.view.adapter.AdapterItemProdukSaya
 import com.example.tokoonline.view.adapter.AdapterProdukAll
 import com.example.tokoonline.view.viewmodel.AlamatViewModel
 import com.example.tokoonline.view.viewmodel.ProdukViewModel
@@ -27,9 +20,6 @@ class ProdukViewByTokoActivity : BaseActivity(), OnItemClick {
     private lateinit var viewModel : ProdukViewModel
     private lateinit var viewModelToko : TokoViewModel
     private lateinit var viewModelAlamat : AlamatViewModel
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

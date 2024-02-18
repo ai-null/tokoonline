@@ -218,7 +218,7 @@
                         android:id="@+id/tv_gambar_toko"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_store" />
+                        android:src="@drawable/ic_shop" />
 
                     <TextView
                         android:id="@+id/tv_nama_toko"
