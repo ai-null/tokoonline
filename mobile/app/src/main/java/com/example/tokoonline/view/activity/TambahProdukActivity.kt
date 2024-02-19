@@ -45,7 +45,6 @@ class TambahProdukActivity : BaseActivity() {
             produk?.let { fillFormWithProductData(it) }
         }else{
             initListener()
-
         }
 
 
@@ -58,6 +57,17 @@ class TambahProdukActivity : BaseActivity() {
     }
 
     private fun initListener() = with(binding) {
+        kategoriSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+//                        Log.d("Spinner", "Selected item: ${p0?.getItemAtPosition(p2)}")
+                // Get the selected item as a String
+                kategori = p0?.getItemAtPosition(p2).toString()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
+
         btnSbmitProduk.setOnClickListener {
             showProgressDialog()
             if (selectedImageUri != null) {
@@ -120,18 +130,6 @@ class TambahProdukActivity : BaseActivity() {
 
     private fun uploadProduct(imageReference: StorageReference) {
         with(binding) {
-            kategoriSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-//                        Log.d("Spinner", "Selected item: ${p0?.getItemAtPosition(p2)}")
-                        // Get the selected item as a String
-                        kategori = p0?.getItemAtPosition(p2).toString()
-                    }
-
-                    override fun onNothingSelected(p0: AdapterView<*>?) {
-                    }
-                }
-
-
             imageReference.downloadUrl.addOnSuccessListener { uri ->
                 userRepository.getTokoID(userRepository.uid ?: "") { isSuccess, idToko ->
                     if (isSuccess) {
