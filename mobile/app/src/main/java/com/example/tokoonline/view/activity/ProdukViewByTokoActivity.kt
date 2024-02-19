@@ -48,18 +48,16 @@ class ProdukViewByTokoActivity : BaseActivity(), OnItemClick {
         val tokoID = intent.getStringExtra("tokoID").toString()
         val sellerID = intent.getStringExtra("sellerID").toString()
 
-        if (tokoID != null) {
-            viewModelToko.getTokoById(tokoID, sellerID){tokoData ->
-                binding.tvNamaToko.text = tokoData?.nama
-                val alamatTokoID = tokoData?.id_alamat.toString()
+        viewModelToko.getTokoById(tokoID, sellerID){tokoData ->
+            binding.tvNamaToko.text = tokoData?.nama
+            val alamatTokoID = tokoData?.id_alamat.toString()
 
-                viewModelAlamat.getAlamatById(alamatTokoID, sellerID){alamat ->
-                    if (alamat !== null){
-                        binding.tvAlamatToko.text = alamat.alamat
-                    }else{
-                        viewModelAlamat.getAlamatDefault(sellerID){alamat ->
-                            binding.tvAlamatToko.text = alamat?.alamat
-                        }
+            viewModelAlamat.getAlamatById(alamatTokoID, sellerID){alamat ->
+                if (alamat !== null){
+                    binding.tvAlamatToko.text = alamat.alamat
+                }else{
+                    viewModelAlamat.getAlamatDefault(sellerID){alamat ->
+                        binding.tvAlamatToko.text = alamat?.alamat
                     }
                 }
             }
