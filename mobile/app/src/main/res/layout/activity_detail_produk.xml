@@ -145,9 +145,34 @@
                     style="@style/body_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:layout_marginHorizontal="@dimen/medium_space"
                     android:text="-"
                     tools:text="Pembelian dalam jumlah besar hubungi" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="#F5F5F5" />
+
+                <TextView
+                    style="@style/body_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/medium_space"
+                    android:layout_marginTop="@dimen/medium_space"
+                    android:layout_marginBottom="@dimen/small_space_8"
+                    android:text="Kategori Produk" />
+
+                <TextView
+                    android:id="@+id/tv_kategori"
+                    style="@style/body_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/medium_space"
+                    android:text="-"
+                    tools:text="Pembelian dalam jumlah besar hubungi" />
+
 
                 <View
                     android:layout_width="match_parent"

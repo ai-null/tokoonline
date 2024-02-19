@@ -141,6 +141,13 @@ class DetailProductActivity : BaseActivity() {
 
         val idToko = produkData?.idToko.toString()
         val idSeller = produkData?.idSeller.toString()
+        val idKategori = produkData?.kategori.toString()
+
+        tvKategori.setOnClickListener {
+            val intent = Intent(this@DetailProductActivity, ProdukViewByKategori::class.java)
+            intent.putExtra("kategoriID", idKategori)
+            startActivity(intent)
+        }
 
         viewModelToko.getTokoById(idToko, idSeller){ tokoData ->
             tvNamaToko.setText(tokoData?.nama.toString())
@@ -224,6 +231,7 @@ class DetailProductActivity : BaseActivity() {
         tvNama.text = produkData.nama
         tvHarga.text = moneyFormatter(produkData.harga)
         tvDeskripsi.text = produkData.deskripsi
+        tvKategori.text = produkData.kategori
         Glide.with(image).load(produkData.image.toUri()).into(image)
         if (produkData.idSeller == userRepository.uid.toString()){
             binding.btnBeli.gone()

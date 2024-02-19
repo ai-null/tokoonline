@@ -110,6 +110,23 @@ class ProdukRepository {
             })
     }
 
+    fun getProdukByKategori(kategoriID: String, onComplete: (data: List<Produk?>) -> Unit){
+        databaseReference.orderByChild("kategori")
+            .equalTo(kategoriID)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val value = snapshot.children.map { snapshot ->
+                        snapshot.getValue(Produk::class.java)
+                    }
+                    onComplete(value)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    onComplete(emptyList())
+                }
+            })
+    }
+
 
     fun getProdukDetail(
         namaProduk: String,

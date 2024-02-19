@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:ignore="contentDescription, hardcodedText, autofill">
+
+    <com.example.tokoonline.view.Navbar
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftIcon="@drawable/round_arrow_back"
+        app:title="Kategori" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorNeutral100"
+        app:layout_constraintTop_toBottomOf="@id/navbar" />
+
+    <LinearLayout
+        android:id="@+id/view_toko"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/medium_space"
+        android:paddingTop="@dimen/extra_medium_space"
+        android:paddingBottom="@dimen/small_space_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/divider">
+
+        <TextView
+            android:id="@+id/tv_text_kategori"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/body_1"
+            android:text="-"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:textColor="#5C605C"
+            android:textSize="13sp"
+            tools:text="Produk Rekomendasi Fashion Wanita &amp; Pria" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_produk_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/small_space_8"
+        android:paddingVertical="@dimen/small_space_6"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_toko"
+        app:spanCount="2"
+        tools:listitem="@layout/item_produk_all" />
+
+</LinearLayout>

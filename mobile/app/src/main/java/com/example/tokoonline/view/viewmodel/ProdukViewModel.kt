@@ -5,6 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.tokoonline.core.base.BaseViewModel
 import com.example.tokoonline.data.model.firebase.Produk
+import com.example.tokoonline.view.activity.ProdukViewByKategori
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -67,6 +68,15 @@ class ProdukViewModel : BaseViewModel() {
     fun loadProdukbyIDToko(tokoID: String, onComplete: (List<Produk>) -> Unit) {
         viewModelScope.launch {
             produkRepository.getProdukByTokoId(tokoID) { produkList ->
+                val nonNullProdukList = produkList.filterNotNull()
+                onComplete(nonNullProdukList)
+            }
+        }
+    }
+
+    fun loadProdukByKategori(kategori: String, onComplete: (List<Produk>) -> Unit) {
+        viewModelScope.launch {
+            produkRepository.getProdukByKategori(kategori) { produkList ->
                 val nonNullProdukList = produkList.filterNotNull()
                 onComplete(nonNullProdukList)
             }
