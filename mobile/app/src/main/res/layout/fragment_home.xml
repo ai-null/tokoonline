@@ -193,7 +193,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="7dp"
                             android:maxLines="2"
-                            android:text="Fashion"
+                            android:textAlignment="center"
+                            android:text="Fashion Kecantikan"
                             android:textColor="#434744"
                             android:textSize="@dimen/body_2" />
                     </LinearLayout>
@@ -215,7 +216,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="7dp"
                             android:maxLines="2"
-                            android:text="Makan\nMinum"
+                            android:textAlignment="center"
+                            android:text="Kebutuhan Harian"
                             android:textColor="#434744"
                             android:textSize="@dimen/body_2" />
                     </LinearLayout>
@@ -223,7 +225,7 @@
                     <LinearLayout
                         android:id="@+id/div_dapur"
                         android:layout_width="100dp"
-                        android:paddingHorizontal="@dimen/large_space"
+                        android:paddingHorizontal="12dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
@@ -238,7 +240,8 @@
                             android:gravity="center"
                             android:layout_marginTop="7dp"
                             android:maxLines="2"
-                            android:text="Peralatan\nDapur"
+                            android:textAlignment="center"
+                            android:text="Perlengkapan\nRumah"
                             android:textColor="#434744"
                             android:textSize="@dimen/body_2" />
                     </LinearLayout>
@@ -246,7 +249,7 @@
                     <LinearLayout
                         android:id="@+id/div_peralatanmandi"
                         android:layout_width="100dp"
-                        android:paddingHorizontal="@dimen/large_space"
+                        android:paddingHorizontal="@dimen/medium_space"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
@@ -254,21 +257,21 @@
                             android:layout_width="44dp"
                             android:layout_height="44dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/peralatan_mandi" />
+                            android:src="@drawable/device" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:layout_marginTop="7dp"
-                            android:maxLines="2"
-                            android:text="Peralatan\nMandi"
+                            android:maxLines="3"
+                            android:text="Gadget\nElektronik"
                             android:textColor="#434744"
                             android:textSize="@dimen/body_2" />
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/div_peralatanSekolah"
                         android:layout_width="100dp"
-                        android:paddingHorizontal="@dimen/large_space"
+                        android:paddingHorizontal="@dimen/medium_space"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical">
@@ -283,7 +286,8 @@
                             android:gravity="center"
                             android:layout_marginTop="7dp"
                             android:maxLines="2"
-                            android:text="Peralatan\nSekolah"
+                            android:textAlignment="center"
+                            android:text="Alat Tulis"
                             android:textColor="#434744"
                             android:textSize="@dimen/body_2" />
                     </LinearLayout>

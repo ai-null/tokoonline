@@ -91,31 +91,31 @@ class HomeFragment : BaseFragment(), OnItemClick {
 
         divFashion.setOnClickListener {
             val intent = Intent(context, ProdukViewByKategori::class.java)
-            intent.putExtra("kategoriID", "Fashion Wanita & Pria")
+            intent.putExtra("kategoriID", "Fashion Kecantikan")
             startActivity(intent)
         }
 
         divMakanminum.setOnClickListener {
             val intent = Intent(context, ProdukViewByKategori::class.java)
-            intent.putExtra("kategoriID", "Makanan dan Minuman")
+            intent.putExtra("kategoriID", "Kebutuhan Harian")
             startActivity(intent)
         }
 
         divDapur.setOnClickListener {
             val intent = Intent(context, ProdukViewByKategori::class.java)
-            intent.putExtra("kategoriID", "Peralatan Dapur")
+            intent.putExtra("kategoriID", "Perlengkapan Rumah")
             startActivity(intent)
         }
 
         divPeralatanmandi.setOnClickListener {
             val intent = Intent(context, ProdukViewByKategori::class.java)
-            intent.putExtra("kategoriID", "Peralatan Mandi")
+            intent.putExtra("kategoriID", "Gadget Elektronik")
             startActivity(intent)
         }
 
         divPeralatanSekolah.setOnClickListener {
             val intent = Intent(context, ProdukViewByKategori::class.java)
-            intent.putExtra("kategoriID", "Peralatan Sekolah")
+            intent.putExtra("kategoriID", "Alat Tulis")
             startActivity(intent)
         }
     }
