@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Spinner
+import androidx.activity.R
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.tokoonline.view.viewmodel.TambahProdukViewModel
@@ -103,6 +105,16 @@ class TambahProdukActivity : BaseActivity() {
 
             etStok.setText(produk.stok.toString())
 
+//            val kategoriArray = resources.getStringArray(R.array.kategori_array)
+//            val index = kategoriArray.indexOf(produk.kategori)
+//
+//            if (index != -1) {
+//                kategoriSpinner.setSelection(index)
+//            } else {
+//                // Handle the case when the category is not found in the array
+//            }
+
+
             binding.btnSbmitProduk.setText("Update Data Produk")
             binding.btnSbmitProduk.setOnClickListener {
                 showProgressDialog()
@@ -178,7 +190,8 @@ class TambahProdukActivity : BaseActivity() {
                         idSeller = userRepository.uid,
                         beratProduk = etBeratProduk.text.toString().toDouble(),
                         stok = etStok.text.toString().toInt(),
-                        createdAt = getFormattedTimeMidtrans(System.currentTimeMillis())
+                        createdAt = getFormattedTimeMidtrans(System.currentTimeMillis()),
+                        kategori = kategori
                     )
                     viewModel.updateProduk(dataProdukNew) { isSuccess ->
                         dismissProgressDialog()
@@ -210,3 +223,16 @@ class TambahProdukActivity : BaseActivity() {
         private const val REQUEST_SELECT_IMAGE = 100
     }
 }
+
+//private fun Spinner.setSelection(toString: String) {
+//    val adapter = adapter
+//    if (adapter != null) {
+//        for (i in 0 until adapter.count) {
+//            if (adapter.getItem(i).toString() == value) {
+//                setSelection(i)
+//                break
+//            }
+//        }
+//    }
+//
+//}

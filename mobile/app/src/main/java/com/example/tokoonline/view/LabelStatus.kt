@@ -40,6 +40,25 @@ class LabelStatus constructor(context: Context, attributeSet: AttributeSet) :
             )
         }
 
+        if(status.equals("dikirim", true)) {
+            content.text = "PERLU DIKIRIM"
+            content.setTextColor(ContextCompat.getColor(
+                context,
+                R.color.colorPendingText
+            ))
+            root.setCardBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.colorPendingBackground
+                )
+            )
+            root.strokeColor = ContextCompat.getColor(
+                context,
+                R.color.colorPendingText
+            )
+
+        }
+
         if (status.equals("canceled", true)) {
             content.text = "DIBATALKAN"
             content.setTextColor(ContextCompat.getColor(

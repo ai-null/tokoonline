@@ -20,4 +20,12 @@
     <string name="harga_produk">Harga Produk</string>
     <string name="deskripsi_produk">Deskripsi Produk</string>
     <string name="submit">Submit</string>
+    <string-array name="kategori_array">
+        <item>Fashion Wanita &amp; Pria</item>
+        <item>Makanan dan Minuman</item>
+        <item>Peralatan Dapur</item>
+        <item>Peralatan Mandi</item>
+        <item>Peralatan Sekolah</item>
+        <!-- Add more items as needed -->
+    </string-array>
 </resources>
