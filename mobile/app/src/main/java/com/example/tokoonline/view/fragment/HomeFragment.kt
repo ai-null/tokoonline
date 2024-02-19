@@ -88,6 +88,36 @@ class HomeFragment : BaseFragment(), OnItemClick {
         icKeranjang.setOnClickListener {
             startActivity(Intent(activity, KeranjangActivity::class.java))
         }
+
+        divFashion.setOnClickListener {
+            val intent = Intent(context, ProdukViewByKategori::class.java)
+            intent.putExtra("kategoriID", "Fashion Wanita & Pria")
+            startActivity(intent)
+        }
+
+        divMakanminum.setOnClickListener {
+            val intent = Intent(context, ProdukViewByKategori::class.java)
+            intent.putExtra("kategoriID", "Makanan dan Minuman")
+            startActivity(intent)
+        }
+
+        divDapur.setOnClickListener {
+            val intent = Intent(context, ProdukViewByKategori::class.java)
+            intent.putExtra("kategoriID", "Peralatan Dapur")
+            startActivity(intent)
+        }
+
+        divPeralatanmandi.setOnClickListener {
+            val intent = Intent(context, ProdukViewByKategori::class.java)
+            intent.putExtra("kategoriID", "Peralatan Mandi")
+            startActivity(intent)
+        }
+
+        divPeralatanSekolah.setOnClickListener {
+            val intent = Intent(context, ProdukViewByKategori::class.java)
+            intent.putExtra("kategoriID", "Peralatan Sekolah")
+            startActivity(intent)
+        }
     }
 
     private fun observe() {

@@ -50,7 +50,7 @@ class ProdukViewByKategori : BaseActivity(), OnItemClick {
         val kategoriID = intent.getStringExtra("kategoriID").toString()
 
         viewModel.loadProdukByKategori(kategoriID){
-            binding.tvTextKategori.text = kategoriID
+            binding.tvTextKategori.text = "Produk Rekomendasi " + kategoriID
         }
 
         loadProdukByKategori(kategoriID)
