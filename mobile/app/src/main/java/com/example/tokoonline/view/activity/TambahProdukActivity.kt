@@ -1,22 +1,19 @@
 package com.example.tokoonline.view.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Spinner
-import androidx.activity.R
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
-import com.example.tokoonline.view.viewmodel.TambahProdukViewModel
 import com.example.tokoonline.core.base.BaseActivity
 import com.example.tokoonline.core.util.getFormattedTimeMidtrans
 import com.example.tokoonline.data.model.firebase.Produk
 import com.example.tokoonline.databinding.ActivityTambahProdukBinding
-import com.example.tokoonline.view.viewmodel.ProdukViewModel
-import com.google.firebase.crashlytics.internal.model.CrashlyticsReport.Session.Event.Log
+import com.example.tokoonline.view.viewmodel.TambahProdukViewModel
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
@@ -43,11 +40,23 @@ class TambahProdukActivity : BaseActivity() {
 
         val produk = intent.getParcelableExtra<Produk>("produk")
 
-        if (produk !== null){
-            produk?.let { fillFormWithProductData(it) }
-        }else{
+        if (produk !== null) {
+            fillFormWithProductData(produk)
+        } else {
             initListener()
         }
+
+        binding.kategoriSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+//                        Log.d("Spinner", "Selected item: ${p0?.getItemAtPosition(p2)}")
+                    // Get the selected item as a String
+                    kategori = p0?.getItemAtPosition(p2).toString()
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+            }
 
 
         binding.buttonTambahGambarProduk.setOnClickListener {
@@ -59,17 +68,6 @@ class TambahProdukActivity : BaseActivity() {
     }
 
     private fun initListener() = with(binding) {
-        kategoriSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-//                        Log.d("Spinner", "Selected item: ${p0?.getItemAtPosition(p2)}")
-                // Get the selected item as a String
-                kategori = p0?.getItemAtPosition(p2).toString()
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-        }
-
         btnSbmitProduk.setOnClickListener {
             showProgressDialog()
             if (selectedImageUri != null) {
@@ -89,6 +87,7 @@ class TambahProdukActivity : BaseActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun fillFormWithProductData(produk: Produk) {
         with(binding) {
             Glide.with(this@TambahProdukActivity)
@@ -115,7 +114,7 @@ class TambahProdukActivity : BaseActivity() {
 //            }
 
 
-            binding.btnSbmitProduk.setText("Update Data Produk")
+            binding.btnSbmitProduk.text = "Update Data Produk"
             binding.btnSbmitProduk.setOnClickListener {
                 showProgressDialog()
                 if (selectedImageUri != null) {
@@ -132,7 +131,7 @@ class TambahProdukActivity : BaseActivity() {
                             showToast("Gambar gagal diunggah")
                         }
                 } else {
-                    val existingImageUrl = produk?.image ?: ""
+                    val existingImageUrl = produk.image
                     updateUserProduct(existingImageUrl, produk.id)
                 }
             }
