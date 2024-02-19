@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
+import android.view.View
+import android.widget.AdapterView
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.tokoonline.view.viewmodel.TambahProdukViewModel
@@ -12,6 +14,7 @@ import com.example.tokoonline.core.util.getFormattedTimeMidtrans
 import com.example.tokoonline.data.model.firebase.Produk
 import com.example.tokoonline.databinding.ActivityTambahProdukBinding
 import com.example.tokoonline.view.viewmodel.ProdukViewModel
+import com.google.firebase.crashlytics.internal.model.CrashlyticsReport.Session.Event.Log
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
@@ -21,6 +24,7 @@ class TambahProdukActivity : BaseActivity() {
     private val viewModel: TambahProdukViewModel by viewModels()
     private lateinit var storageReference: StorageReference
     private var selectedImageUri: Uri? = null
+    private var kategori: String = ""
 
     private fun String.toEditable() : Editable {
         return Editable.Factory.getInstance().newEditable(this)
@@ -116,6 +120,18 @@ class TambahProdukActivity : BaseActivity() {
 
     private fun uploadProduct(imageReference: StorageReference) {
         with(binding) {
+            kategoriSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+//                        Log.d("Spinner", "Selected item: ${p0?.getItemAtPosition(p2)}")
+                        // Get the selected item as a String
+                        kategori = p0?.getItemAtPosition(p2).toString()
+                    }
+
+                    override fun onNothingSelected(p0: AdapterView<*>?) {
+                    }
+                }
+
+
             imageReference.downloadUrl.addOnSuccessListener { uri ->
                 userRepository.getTokoID(userRepository.uid ?: "") { isSuccess, idToko ->
                     if (isSuccess) {
@@ -129,7 +145,8 @@ class TambahProdukActivity : BaseActivity() {
                             idSeller = userRepository.uid,
                             beratProduk = etBeratProduk.text.toString().toDouble(),
                             stok = this.etStok.text.toString().toInt(),
-                            createdAt = getFormattedTimeMidtrans(System.currentTimeMillis())
+                            createdAt = getFormattedTimeMidtrans(System.currentTimeMillis()),
+                            kategori = kategori,
                         )
                         viewModel.addData(dataProdukNew) { isSuccess ->
                             dismissProgressDialog()

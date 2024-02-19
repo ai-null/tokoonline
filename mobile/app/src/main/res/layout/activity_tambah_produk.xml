@@ -151,6 +151,44 @@
             android:background="#F5F5F5"
             android:layout_height="4dp"/>
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/intermedium"
+                android:text="Kategori Produk"
+                android:textColor="#2C302D"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/kategoriSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:entries="@array/kategori_array"
+                android:prompt="@string/select_boatman"/>
+
+
+
+        </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:background="#F5F5F5"
+            android:layout_height="4dp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -170,8 +208,6 @@
                     android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

@@ -23,4 +23,13 @@
     <string name="title_activity_status_pesanan">StatusPesananActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="select_boatman">Select Boatman</string>
+    <string-array name="kategori_array">
+        <item>Fashion Wanita &amp; Pria</item>
+        <item>Makanan dan Minuman</item>
+        <item>Peralatan Dapur</item>
+        <item>Peralatan Mandi</item>
+        <item>Peralatan Sekolah</item>
+        <!-- Add more items as needed -->
+    </string-array>
 </resources>

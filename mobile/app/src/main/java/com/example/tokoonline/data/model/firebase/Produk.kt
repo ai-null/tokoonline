@@ -20,6 +20,7 @@ data class Produk(
     val idToko: String? = "",
     val createdAt: String = "",
     val terjual: Int = 0,
+    val kategori: String = "",
 ) : Parcelable, Serializable {
     fun toMap(): Map<String, Any?> {
         val gson = Gson()
