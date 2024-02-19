@@ -146,7 +146,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <TextView
@@ -162,21 +161,141 @@
                     android:textSize="16sp"
                     android:textStyle="normal" />
 
-
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_kategori"
-                android:visibility="gone"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/no_space"
-                android:paddingEnd="@dimen/medium_space"
-                android:paddingBottom="@dimen/medium_space"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                >
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/medium_space"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:id="@+id/div_fashion"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/medium_space"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/fashion" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:maxLines="2"
+                            android:text="Fashion"
+                            android:textColor="#434744"
+                            android:textSize="@dimen/body_2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/div_makanminum"
+                        android:layout_width="100dp"
+                        android:paddingHorizontal="@dimen/medium_space"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/makan_minum" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:maxLines="2"
+                            android:text="Makan\nMinum"
+                            android:textColor="#434744"
+                            android:textSize="@dimen/body_2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/div_dapur"
+                        android:layout_width="100dp"
+                        android:paddingHorizontal="@dimen/large_space"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/peralatan_dapur" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="7dp"
+                            android:maxLines="2"
+                            android:text="Peralatan\nDapur"
+                            android:textColor="#434744"
+                            android:textSize="@dimen/body_2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/div_peralatanmandi"
+                        android:layout_width="100dp"
+                        android:paddingHorizontal="@dimen/large_space"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/peralatan_mandi" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="7dp"
+                            android:maxLines="2"
+                            android:text="Peralatan\nMandi"
+                            android:textColor="#434744"
+                            android:textSize="@dimen/body_2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/div_peralatanSekolah"
+                        android:layout_width="100dp"
+                        android:paddingHorizontal="@dimen/large_space"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/peralatan_sekolah" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="7dp"
+                            android:maxLines="2"
+                            android:text="Peralatan\nSekolah"
+                            android:textColor="#434744"
+                            android:textSize="@dimen/body_2" />
+                    </LinearLayout>
+
+
+
+
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
 
             <LinearLayout
                 android:layout_width="match_parent"

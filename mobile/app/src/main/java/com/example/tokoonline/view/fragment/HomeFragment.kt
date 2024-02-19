@@ -21,6 +21,7 @@ import com.example.tokoonline.view.activity.KeranjangActivity
 import com.example.tokoonline.view.activity.SearchActivity
 import com.example.tokoonline.view.activity.TambahProdukActivity
 import com.example.tokoonline.view.activity.ProdukViewAllActivity
+import com.example.tokoonline.view.activity.ProdukViewByKategori
 import com.example.tokoonline.view.adapter.AdapterProdukTerlaris
 import com.example.tokoonline.view.viewmodel.ProdukViewModel
 
@@ -28,6 +29,7 @@ class HomeFragment : BaseFragment(), OnItemClick {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var productAdapter: AdapterProduk
     private lateinit var productTerlarisAdapter : AdapterProdukTerlaris
+//    private lateinit var productKategori :
 
     private val viewModel: ProdukViewModel by viewModels()
 
