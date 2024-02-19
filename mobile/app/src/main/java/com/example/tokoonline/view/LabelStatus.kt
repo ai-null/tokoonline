@@ -26,17 +26,17 @@ class LabelStatus constructor(context: Context, attributeSet: AttributeSet) :
             content.text = "MENUNGGU"
             content.setTextColor(ContextCompat.getColor(
                 context,
-                R.color.colorPendingText
+                R.color.colorPendingText2
             ))
             root.setCardBackgroundColor(
                 ContextCompat.getColor(
                     context,
-                    R.color.colorPendingBackground
+                    R.color.colorPendingBackground2
                 )
             )
             root.strokeColor = ContextCompat.getColor(
                 context,
-                R.color.colorPendingText
+                R.color.colorPendingText2
             )
         }
 

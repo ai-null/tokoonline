@@ -8,6 +8,7 @@ import com.example.tokoonline.view.fragment.toko.pesanan.StatusPesananFragment
 
 private val tabTitles = arrayOf(
     "Perlu Dikirim",
+    "Dikirim",
     "Pembatalan",
     "Selesai",
 )
@@ -24,6 +25,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
             1 -> StatusPesananFragment.newInstance(position)
             2 -> StatusPesananFragment.newInstance(position)
             3 -> StatusPesananFragment.newInstance(position)
+            4 -> StatusPesananFragment.newInstance(position)
             else -> {
                 StatusPesananFragment.newInstance(position)
             }
@@ -35,6 +37,6 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     }
 
     override fun getCount(): Int {
-        return 3
+        return 4
     }
 }

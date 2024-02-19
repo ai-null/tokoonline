@@ -341,9 +341,45 @@
                                 android:textSize="12sp"
                                 android:textColor="#747674"
                                 android:fontFamily="@font/interregular"
-                                android:text="Perlu Dikirim" />
+                                android:text="Menunggu" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="70dp"
+                        android:layout_margin="8dp"
+                        app:cardBackgroundColor="#F0F2EE">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvTelahDikirim"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:textColor="#2C302D"
+                                android:text="0"
+                                android:fontFamily="@font/intersemibold"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:textSize="12sp"
+                                android:textColor="#747674"
+                                android:fontFamily="@font/interregular"
+                                android:text="Dikirim" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
@@ -376,7 +412,7 @@
                                 android:textSize="12sp"
                                 android:textColor="#747674"
                                 android:fontFamily="@font/interregular"
-                                android:text="Pembatalan"/>
+                                android:text="Batal"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 

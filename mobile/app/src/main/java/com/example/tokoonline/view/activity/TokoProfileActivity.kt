@@ -10,6 +10,7 @@ import com.example.tokoonline.core.base.BaseActivity
 import com.example.tokoonline.data.model.firebase.Transaction
 import com.example.tokoonline.databinding.ActivityTokoProfileBinding
 import com.example.tokoonline.view.activity.DetailPesananTokoActivity.Companion.STATUS_CANCELED
+import com.example.tokoonline.view.activity.DetailPesananTokoActivity.Companion.STATUS_DIKIRIM
 import com.example.tokoonline.view.activity.DetailPesananTokoActivity.Companion.STATUS_PENDING
 import com.example.tokoonline.view.activity.DetailPesananTokoActivity.Companion.STATUS_SUCCESS
 import com.example.tokoonline.view.activity.toko.pendapatan.PendapatanActivity
@@ -45,6 +46,7 @@ class TokoProfileActivity : BaseActivity() {
     private fun getStatusTransaction() {
         viewModel.getTransactionBySellerId(userRepository.uid ?: "") { transactionList ->
             binding.tvDikirim.text = transactionList.getCountStatus(STATUS_PENDING)
+            binding.tvTelahDikirim.text = transactionList.getCountStatus(STATUS_DIKIRIM)
             binding.tvPembatalan.text = transactionList.getCountStatus(STATUS_CANCELED)
             binding.tvSelesai.text = transactionList.getCountStatus(STATUS_SUCCESS)
         }

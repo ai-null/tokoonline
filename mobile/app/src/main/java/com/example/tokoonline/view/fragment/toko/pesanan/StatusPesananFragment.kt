@@ -102,6 +102,7 @@ class StatusPesananFragment : BaseFragment() {
                 0 -> getRiwayat(uuid, 0)
                 1 -> getRiwayat(uuid, 1)
                 2 -> getRiwayat(uuid, 2)
+                3 -> getRiwayat(uuid, 3)
             }
 
             when (it) {
@@ -111,12 +112,17 @@ class StatusPesananFragment : BaseFragment() {
                 }
 
                 1 -> {
+                    cover.setImageResource(R.drawable.delivery)
+                    subtitle.text = "Pesanan yang sudah dikirim akan ditampilkan\npada halaman ini"
+                }
+
+                2 -> {
                     cover.setImageResource(R.drawable.cancel)
                     subtitle.text =
                         "Pesanan yang telah dibatalkan akan ditampilkan\npada halaman ini"
                 }
 
-                2 -> {
+                3 -> {
                     cover.setImageResource(R.drawable.selesai)
                     subtitle.text = "Pesanan yang telah selesai akan ditampilkan\npada halaman ini"
                 }
@@ -131,8 +137,9 @@ class StatusPesananFragment : BaseFragment() {
 
             val filteredTransactionList = when (statusPesanan) {
                 0 -> transactionList.filter { it.status.equals("pending", ignoreCase = true) }
-                1 -> transactionList.filter { it.status.equals("canceled", ignoreCase = true) }
-                2 -> transactionList.filter { it.status.equals("success", ignoreCase = true) }
+                1 -> transactionList.filter { it.status.equals("dikirim", ignoreCase = true) }
+                2 -> transactionList.filter { it.status.equals("canceled", ignoreCase = true) }
+                3 -> transactionList.filter { it.status.equals("success", ignoreCase = true) }
                 else -> transactionList
             }
 

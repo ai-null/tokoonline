@@ -29,6 +29,7 @@ class DetailPesananTokoActivity : BaseActivity() {
 
     companion object {
         const val STATUS_PENDING = "pending"
+        const val STATUS_DIKIRIM = "dikirim"
         const val STATUS_CANCELED = "canceled"
         const val STATUS_SUCCESS = "success"
 
@@ -82,15 +83,14 @@ class DetailPesananTokoActivity : BaseActivity() {
         }
 
         if (isFromSeller) {
-            if (data.status?.toLowerCase() == STATUS_PENDING) {
-                binding.sellerAction.visible()
-                binding.btnSelesai.setOnClickListener {
+            if(data.status?.toLowerCase() == STATUS_DIKIRIM){
+                binding.sellerAction2.visible()
+                binding.btnDikirim.setOnClickListener{
                     showProgressDialog()
-                    transactionRepository
-                        .updateTransaction(transaction = data.copy(status = STATUS_SUCCESS)) {
-                            if (it) finish()
-                            else showToast("Gagal update status transaksi")
-                        }
+                    transactionRepository.updateTransaction(transaction = data.copy(status = STATUS_SUCCESS)) {
+                        if (it) finish()
+                        else showToast("Gagal update status transaksi")
+                    }
 
                     produkTransactionRepository.getProdukById(data.produkId) { produkList ->
                         val filteredList = produkList.filterNotNull()
@@ -107,6 +107,17 @@ class DetailPesananTokoActivity : BaseActivity() {
                             }
                         }
                     }
+                }
+            }
+            if (data.status?.toLowerCase() == STATUS_PENDING) {
+                binding.sellerAction.visible()
+                binding.btnSelesai.setOnClickListener {
+                    showProgressDialog()
+                    transactionRepository
+                        .updateTransaction(transaction = data.copy(status = STATUS_DIKIRIM)) {
+                            if (it) finish()
+                            else showToast("Gagal update status transaksi")
+                        }
                 }
 
                 binding.btnBatal.setOnClickListener {
@@ -140,16 +151,25 @@ class DetailPesananTokoActivity : BaseActivity() {
             STATUS_PENDING -> {
                 binding.statusCancel.gone()
                 binding.statusSuccess.gone()
+                binding.statusDikirim.gone()
+            }
+
+            STATUS_DIKIRIM -> {
+                binding.statusCancel.gone()
+                binding.statusSuccess.gone()
+                binding.statusPending.gone()
             }
 
             STATUS_CANCELED -> {
                 binding.statusPending.gone()
                 binding.statusSuccess.gone()
+                binding.statusDikirim.gone()
             }
 
             STATUS_SUCCESS -> {
                 binding.statusPending.gone()
                 binding.statusCancel.gone()
+                binding.statusDikirim.gone()
             }
         }
 

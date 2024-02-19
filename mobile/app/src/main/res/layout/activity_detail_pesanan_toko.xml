@@ -28,7 +28,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
-                    android:background="#DCA436"
+                    android:background="#8C877C"
                     android:id="@+id/statusPending"
                     android:padding="8dp"
                     android:layout_height="80dp">
@@ -59,6 +59,58 @@
                             style="@style/heading_14"
                             android:padding="4dp"
                             android:text="Pesanan sedang diproses"
+                            android:fontFamily="@font/interregular"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginRight="8dp"
+                            android:textSize="12sp"
+                            tools:text="Pesanan sedang diproses" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:src="@drawable/icon_menunggu"
+                        android:paddingHorizontal="@dimen/medium_space"
+                        android:layout_height="match_parent"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:background="#DCA436"
+                    android:id="@+id/statusDikirim"
+                    android:padding="8dp"
+                    android:layout_height="80dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/medium_space"
+                        android:paddingEnd="@dimen/no_space"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/heading_14"
+                            android:padding="4dp"
+                            android:text="Dikirim"
+                            android:fontFamily="@font/intersemibold"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginRight="8dp"
+                            android:textSize="14sp"
+                            tools:text="Menunggu" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/heading_14"
+                            android:padding="4dp"
+                            android:text="Pesanan sedang dikirim"
                             android:fontFamily="@font/interregular"
                             android:textColor="#FFFFFF"
                             android:layout_marginRight="8dp"
@@ -557,6 +609,29 @@
 
                 </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/seller_action_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorNeutral50" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_dikirim"
+                    style="@style/button_primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/medium_space"
+                    android:text="Pesanan Diterima" />
+
+            </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/seller_action"
                     android:layout_width="match_parent"
@@ -570,13 +645,14 @@
                         android:layout_height="2dp"
                         android:background="@color/colorNeutral50" />
 
+
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_selesai"
                         style="@style/button_primary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/medium_space"
-                        android:text="Pesanan Diterima" />
+                        android:text="Pesanan Dikirim" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_batal"
