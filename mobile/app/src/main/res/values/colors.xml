@@ -33,6 +33,6 @@
     <color name="colorCancelBackground">#3DC6463A</color>
     <color name="colorCancelText">#C6463A</color>
 
-    <color name="colorPendingBackground2">#544E40</color>
+    <color name="colorPendingBackground2">#3D8C877C</color>
     <color name="colorPendingText2">#8C877C</color>
 </resources>

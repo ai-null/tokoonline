@@ -609,6 +609,29 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/buyer_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorNeutral50" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_batal_buyer"
+                        style="@style/button_danger"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/medium_space"
+                        android:text="Batalkan Transaksi" />
+
+                </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/seller_action_2"
                 android:layout_width="match_parent"

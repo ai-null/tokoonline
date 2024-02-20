@@ -41,7 +41,7 @@ class LabelStatus constructor(context: Context, attributeSet: AttributeSet) :
         }
 
         if(status.equals("dikirim", true)) {
-            content.text = "PERLU DIKIRIM"
+            content.text = "DIKIRIM"
             content.setTextColor(ContextCompat.getColor(
                 context,
                 R.color.colorPendingText
