@@ -60,6 +60,26 @@
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchHistory"
+        app:layout_constraintTop_toBottomOf="@id/searchbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnClearHistory"
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/rvSearchHistory"
+        android:layout_height="wrap_content"
+        android:textColor="#797A79"
+        android:textAllCaps="false"
+        android:text="Hapus Riwayat Pencarian"
+        android:layout_marginTop="8dp"
+        tools:ignore="MissingConstraints" />
+
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"

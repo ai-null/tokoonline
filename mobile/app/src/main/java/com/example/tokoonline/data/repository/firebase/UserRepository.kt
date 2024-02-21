@@ -188,4 +188,16 @@ class UserRepository constructor(
                 }
         }
     }
+
+    fun saveHistory(Key: String){
+
+//        Set<String> sets = new HashSet<>();
+//        sets.add("notification title 1");
+//        mSharedPreferences.edit().putStringSet("keySet",sets).apply();
+////And to add another local notification:
+//        sets = mSharedPreferences.getStringSet("keySet",new HashSet<String>());
+//        sets.add("notification title 2");
+//        mSharedPreferences.edit().putStringSet("keySet",sets).apply();
+
+    }
 }
