@@ -91,7 +91,7 @@ class HomeFragment : BaseFragment(), OnItemClick {
 
         divFashion.setOnClickListener {
             val intent = Intent(context, ProdukViewByKategori::class.java)
-            intent.putExtra("kategoriID", "Fashion Kecantikan")
+            intent.putExtra("kategoriID", "Fashion Perawatan")
             startActivity(intent)
         }
 
@@ -103,7 +103,7 @@ class HomeFragment : BaseFragment(), OnItemClick {
 
         divDapur.setOnClickListener {
             val intent = Intent(context, ProdukViewByKategori::class.java)
-            intent.putExtra("kategoriID", "Perlengkapan Rumah")
+            intent.putExtra("kategoriID", "Perabotan Rumah")
             startActivity(intent)
         }
 

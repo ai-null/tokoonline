@@ -180,7 +180,7 @@
                         android:id="@+id/div_fashion"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:paddingHorizontal="@dimen/medium_space"
+                        android:paddingHorizontal="12dp"
                         android:gravity="center"
                         android:orientation="vertical">
                         <ImageView
@@ -194,7 +194,7 @@
                             android:layout_marginTop="7dp"
                             android:maxLines="2"
                             android:textAlignment="center"
-                            android:text="Fashion Kecantikan"
+                            android:text="Fashion Perawatan"
                             android:textColor="#434744"
                             android:textSize="@dimen/body_2" />
                     </LinearLayout>
@@ -241,7 +241,7 @@
                             android:layout_marginTop="7dp"
                             android:maxLines="2"
                             android:textAlignment="center"
-                            android:text="Perlengkapan\nRumah"
+                            android:text="Perabotan Rumah"
                             android:textColor="#434744"
                             android:textSize="@dimen/body_2" />
                     </LinearLayout>

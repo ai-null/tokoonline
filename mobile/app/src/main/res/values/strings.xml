@@ -25,9 +25,9 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="select_boatman">Select Boatman</string>
     <string-array name="kategori_array">
-        <item>Fashion Kecantikan</item>
+        <item>Fashion Perawatan</item>
         <item>Kebutuhan Harian</item>
-        <item>Perlengkapan Rumah</item>
+        <item>Perabotan Rumah</item>
         <item>Gadget Elektronik</item>
         <item>Alat Tulis</item>
         <!-- Add more items as needed -->

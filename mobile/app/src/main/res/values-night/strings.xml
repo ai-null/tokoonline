@@ -21,11 +21,11 @@
     <string name="deskripsi_produk">Deskripsi Produk</string>
     <string name="submit">Submit</string>
     <string-array name="kategori_array">
-        <item>Fashion Wanita &amp; Pria</item>
-        <item>Makanan dan Minuman</item>
-        <item>Peralatan Dapur</item>
-        <item>Peralatan Mandi</item>
-        <item>Peralatan Sekolah</item>
+        <item>Fashion Perawatan</item>
+        <item>Kebutuhan Harian</item>
+        <item>Perabotan Rumah</item>
+        <item>Gadget Elektronik</item>
+        <item>Alat Tulis</item>
         <!-- Add more items as needed -->
     </string-array>
 </resources>
