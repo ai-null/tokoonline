@@ -38,6 +38,17 @@ class SearchActivity : BaseActivity() {
             }
         })
     }
+
+    private val searchHistoryAdapter: SearchHistoryAdapter by lazy {
+        SearchHistoryAdapter(object: OnItemClick {
+            override fun onClick(data: Any, position: Int) {
+                val selectedSearch = data as String
+                binding.searchbar.setText(selectedSearch)
+                searchProduct(selectedSearch)
+            }
+        })
+    }
+
     private var searchableKeyword = ""
 //    private val KEY_SEARCH_HISTORY = "history_idUser"
 
@@ -58,14 +69,6 @@ class SearchActivity : BaseActivity() {
     private fun initView() {
 
         binding.rvSearchResult.adapter = adapter
-
-        val searchHistoryAdapter = SearchHistoryAdapter(object: OnItemClick {
-            override fun onClick(data: Any, position: Int) {
-                val selectedSearch = data as String
-                binding.searchbar.setText(selectedSearch)
-                searchProduct(selectedSearch)
-            }
-        })
         binding.rvSearchHistory.adapter = searchHistoryAdapter
         binding.rvSearchHistory.layoutManager = LinearLayoutManager(this)
 
@@ -132,6 +135,7 @@ class SearchActivity : BaseActivity() {
 
     private fun searchProduct(searchableKeyword: String) {
         if (searchableKeyword.isEmpty()) return
+        if (binding.rvSearchHistory.isVisible) binding.rvSearchHistory.gone()
 
         val userId = userRepository.uid
 
