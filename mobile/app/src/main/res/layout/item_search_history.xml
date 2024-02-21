@@ -1,11 +1,13 @@
 <!-- res/layout/item_search_history.xml -->
 <LinearLayout
+    android:id="@+id/rootSearch"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="?selectableItemBackground"
     android:focusable="true">
 
     <TextView

@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -18,6 +19,7 @@ class SearchHistoryAdapter(private val onItemClick: (String) -> Unit) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val historyItemText: TextView = itemView.findViewById(R.id.historyItemText)
+        val rootSearch: LinearLayout = itemView.findViewById(R.id.rootSearch)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,7 +33,7 @@ class SearchHistoryAdapter(private val onItemClick: (String) -> Unit) :
         holder.historyItemText.text = searchHistoryItem
 
 
-        holder.itemView.setOnClickListener {
+        holder.rootSearch.setOnClickListener {
             Log.d("SearchHistoryAdapter", "Item clicked: $searchHistoryItem")
             onItemClick(searchHistoryItem)  // Pass the selectedSearch to the lambda
         }
