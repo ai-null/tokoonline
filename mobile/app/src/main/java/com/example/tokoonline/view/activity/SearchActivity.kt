@@ -59,7 +59,10 @@ class SearchActivity : BaseActivity() {
 
         binding.rvSearchResult.adapter = adapter
 
-        val searchHistoryAdapter = SearchHistoryAdapter()
+        val searchHistoryAdapter = SearchHistoryAdapter { selectedSearch ->
+            binding.searchbar.setText(selectedSearch)
+            searchProduct(selectedSearch)
+        }
         binding.rvSearchHistory.adapter = searchHistoryAdapter
         binding.rvSearchHistory.layoutManager = LinearLayoutManager(this)
 
@@ -142,6 +145,7 @@ class SearchActivity : BaseActivity() {
                     val filteredData = data.filterNotNull().filter { produk ->
                         produk.idSeller != userRepository.uid
                     }
+                    binding.btnClearHistory.gone()
                     adapter.submitData(filteredData)
 
                     if (binding.containerSearchNotFound.isVisible) {
@@ -150,6 +154,8 @@ class SearchActivity : BaseActivity() {
                 } else throw Exception("data is null")
             } catch (e: Exception) {
                 binding.containerSearchNotFound.visible()
+                binding.btnClearHistory.gone()
+
             }
             dismissProgressDialog()
         }
@@ -162,5 +168,13 @@ class SearchActivity : BaseActivity() {
         editor.remove(key)
         editor.apply()
     }
+
+//    override fun onPause() {
+//        super.onPause()
+//        if (progressDialog != null && progressDialog.isShowing) {
+//            progressDialog.dismiss()
+//        }
+//    }
+
 
 }
