@@ -59,10 +59,13 @@ class SearchActivity : BaseActivity() {
 
         binding.rvSearchResult.adapter = adapter
 
-        val searchHistoryAdapter = SearchHistoryAdapter { selectedSearch ->
-            binding.searchbar.setText(selectedSearch)
-            searchProduct(selectedSearch)
-        }
+        val searchHistoryAdapter = SearchHistoryAdapter(object: OnItemClick {
+            override fun onClick(data: Any, position: Int) {
+                val selectedSearch = data as String
+                binding.searchbar.setText(selectedSearch)
+                searchProduct(selectedSearch)
+            }
+        })
         binding.rvSearchHistory.adapter = searchHistoryAdapter
         binding.rvSearchHistory.layoutManager = LinearLayoutManager(this)
 
