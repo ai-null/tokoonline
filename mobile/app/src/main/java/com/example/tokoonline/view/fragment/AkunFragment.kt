@@ -85,7 +85,7 @@ class AkunFragment : BaseFragment() {
 
     private fun openWhatsApp(pesan: String? = null) {
         try {
-            val nomor = "085850319392"
+            val nomor = "085606081813"
             val newNomor = if (nomor[0].equals('0', true)) {
                 nomor.replaceFirst("0", "+62")
             } else nomor
