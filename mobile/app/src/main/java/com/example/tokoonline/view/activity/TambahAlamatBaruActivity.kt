@@ -30,8 +30,8 @@ class TambahAlamatBaruActivity : BaseActivity() {
         val newDataAlamat = Alamat(
             alamat = edtAlamat.text.toString(),
             label = edtType.text.toString(),
-            nama = edtNama.text.toString(),
-            phone = edtPhone.text.toString(),
+            nama = userRepository.nama.toString(),
+            phone = userRepository.phone.toString(),
             default = false,
             id_users = userRepository.uid.toString(),
 

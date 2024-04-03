@@ -64,31 +64,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Custom">
-
-            <EditText
-                android:id="@+id/tv_namaPenerima"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nama Penerima"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Custom">
-
-            <EditText
-                android:id="@+id/tv_phonePenerima"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="No. Telepon"
-                android:inputType="phone"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
 
 

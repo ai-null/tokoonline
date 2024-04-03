@@ -37,8 +37,6 @@ class AlamatFormActivity : BaseActivity() {
                     binding.tvLabelAlamat.text = selectedAlamat.label.toEditable()
                     binding.tvAlamatPenerima.text = selectedAlamat.alamat.toEditable()
                     binding.tvCatatanAlamat.text = selectedAlamat.catatan.toEditable()
-                    binding.tvNamaPenerima.text = selectedAlamat.nama.toEditable()
-                    binding.tvPhonePenerima.text = selectedAlamat.phone.toEditable()
 //                    binding.btnHapusAlamat.visibility = View.VISIBLE
 //                    binding.btnHapusAlamat.setOnClickListener {
 //                        viewModel.deleteAlamatById(selectedAlamatId) { isSuccess ->
@@ -82,8 +80,6 @@ class AlamatFormActivity : BaseActivity() {
             label = tvLabelAlamat.text.toString(),
             alamat = tvAlamatPenerima.text.toString(),
             catatan = tvCatatanAlamat.text.toString(),
-            nama = tvNamaPenerima.text.toString(),
-            phone = tvPhonePenerima.text.toString(),
             default = false,
             id_users = userRepository.uid.toString(),
 
