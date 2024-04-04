@@ -1,5 +1,6 @@
 package com.example.tokoonline.view.activity
 
+import android.R
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
@@ -7,6 +8,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.tokoonline.core.base.BaseActivity
@@ -14,6 +17,11 @@ import com.example.tokoonline.core.util.getFormattedTimeMidtrans
 import com.example.tokoonline.data.model.firebase.Produk
 import com.example.tokoonline.databinding.ActivityTambahProdukBinding
 import com.example.tokoonline.view.viewmodel.TambahProdukViewModel
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
@@ -22,6 +30,7 @@ class TambahProdukActivity : BaseActivity() {
     private lateinit var binding: ActivityTambahProdukBinding
     private val viewModel: TambahProdukViewModel by viewModels()
     private lateinit var storageReference: StorageReference
+    private lateinit var databaseReference: DatabaseReference
     private var selectedImageUri: Uri? = null
     private var kategori: String = ""
 
@@ -45,6 +54,34 @@ class TambahProdukActivity : BaseActivity() {
         } else {
             initListener()
         }
+
+        databaseReference = FirebaseDatabase.getInstance().reference.child("Kategori")
+
+
+        val categoryList: MutableList<String> = mutableListOf()
+        databaseReference.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                categoryList.clear()
+                for (postSnapshot in snapshot.children) {
+                    val category = postSnapshot.getValue(String::class.java)
+                    category?.let {
+                        categoryList.add(it)
+                    }
+                }
+                // Create an ArrayAdapter using the string array and a default spinner layout
+                val adapter = ArrayAdapter(this@TambahProdukActivity, R.layout.simple_spinner_item, categoryList)
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                // Apply the adapter to the spinner
+                binding.kategoriSpinner.adapter = adapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@TambahProdukActivity, "Failed to load data", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
 
         binding.kategoriSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
