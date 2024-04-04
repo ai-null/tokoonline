@@ -21,6 +21,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
@@ -62,17 +63,16 @@ class TambahProdukActivity : BaseActivity() {
         databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 categoryList.clear()
+                val type = object : GenericTypeIndicator<Map<String, String>>() {}
                 for (postSnapshot in snapshot.children) {
-                    val category = postSnapshot.getValue(String::class.java)
-                    category?.let {
+                    val categoryMap = postSnapshot.getValue(type)
+                    val categoryName = categoryMap?.get("name")
+                    categoryName?.let {
                         categoryList.add(it)
                     }
                 }
-                // Create an ArrayAdapter using the string array and a default spinner layout
                 val adapter = ArrayAdapter(this@TambahProdukActivity, R.layout.simple_spinner_item, categoryList)
-                // Specify the layout to use when the list of choices appears
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
                 binding.kategoriSpinner.adapter = adapter
             }
 
