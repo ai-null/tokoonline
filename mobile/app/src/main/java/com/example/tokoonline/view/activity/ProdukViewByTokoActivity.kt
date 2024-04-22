@@ -50,17 +50,7 @@ class ProdukViewByTokoActivity : BaseActivity(), OnItemClick {
 
         viewModelToko.getTokoById(tokoID, sellerID){tokoData ->
             binding.tvNamaToko.text = tokoData?.nama
-            val alamatTokoID = tokoData?.id_alamat.toString()
-
-            viewModelAlamat.getAlamatById(alamatTokoID, sellerID){alamat ->
-                if (alamat !== null){
-                    binding.tvAlamatToko.text = alamat.alamat
-                }else{
-                    viewModelAlamat.getAlamatDefault(sellerID){alamat ->
-                        binding.tvAlamatToko.text = alamat?.alamat
-                    }
-                }
-            }
+            binding.tvAlamatToko.text = tokoData?.alamat?.alamat ?: ""
         }
 
         loadProdukbyTokoID(tokoID)

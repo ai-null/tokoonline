@@ -127,16 +127,8 @@ class TokoProfileActivity : BaseActivity() {
                 binding.tvNamaToko1.text = toko.nama
                 binding.tvEmail.text = userRepository.email
                 binding.tvPhone.text = userRepository.phone
-                viewModelAlamat.getAlamatById(toko.id_alamat, userUid) { alamatToko ->
-                    if (alamatToko != null) {
-                        binding.tvAlamatToko.text = alamatToko.alamat
-                    } else {
-                        showToast("Gagal mengambil Alamat Toko")
-                        viewModelAlamat.getAlamatDefault(userUid){alamat ->
-                            binding.tvAlamatToko.text = alamat?.alamat
-                        }
-                    }
-                }
+                binding.tvAlamatToko.text = toko.alamat.alamat
+
                 binding.optionProduk.setOnClickListener{goToProdukSaya(tokoID)}
                 binding.optionPengaturan.setOnClickListener {
                     val intent = Intent(this, TokoSettingActivity::class.java)

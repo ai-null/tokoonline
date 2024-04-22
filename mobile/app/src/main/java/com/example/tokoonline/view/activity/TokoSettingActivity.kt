@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tokoonline.core.base.BaseActivity
 import com.example.tokoonline.core.util.gone
 import com.example.tokoonline.core.util.visible
+import com.example.tokoonline.data.model.firebase.Alamat
 import com.example.tokoonline.data.model.firebase.Toko
 import com.example.tokoonline.databinding.ActivityTokoSettingBinding
 import com.example.tokoonline.view.viewmodel.AlamatViewModel
@@ -42,13 +43,25 @@ class TokoSettingActivity : BaseActivity() {
         if (tokoId != null){
             viewModelToko.getTokoData(userId){toko ->
                 val namaToko = toko?.nama ?: ""
+                val alamatToko = toko?.alamat?.alamat ?: ""
+                val catatanAlamat = toko?.alamat?.catatan ?: ""
                 binding.edtNama.text = namaToko.toEditable()
+                binding.tvCatatanAlamat.setText(catatanAlamat)
+                binding.tvAlamat.setText(alamatToko)
                 viewModelAlamat.getAlamatDefault(userId){alamatDefault->
+
                     binding.btnSimpanToko.setOnClickListener {
                         val newToko = Toko(
                             id = tokoId,
                             id_users = userRepository.uid.toString(),
-                            id_alamat = alamatDefault?.id.toString(),
+                            alamat = Alamat(
+                                nama = namaToko,
+                                id_users = userRepository.uid.toString(),
+                                label = "Toko",
+                                alamat = binding.tvAlamat.text.toString(),
+                                catatan = binding.tvCatatanAlamat.text.toString(),
+                                phone = userRepository.phone.toString(),
+                            ),
                             nama = binding.edtNama.text.toString(),
                         )
                         showProgressDialog()
@@ -69,31 +82,10 @@ class TokoSettingActivity : BaseActivity() {
             startActivity(intent)
         }
 
-        showAlamatDefault(userId)
-
-        binding.btnUbahAlamat.setOnClickListener{
-            goToAlamatSetting()
-            finish()
-        }
-
 
     }
-
 
     private var idAlamat = ""
-    fun showAlamatDefault(userUid: String) {
-        viewModelAlamat.getAlamatDefault(userUid) { alamatDefault ->
-            if (alamatDefault != null) {
-                binding.alamatDefault.visible()
-                binding.alamatDefault.text =
-                        "${alamatDefault.nama} \u2022 ${alamatDefault.phone}\n${alamatDefault.alamat}"
-                    idAlamat = alamatDefault.id.toString()
-                alamatDefault.id
-            } else {
-                binding.alamatDefault.visibility = View.GONE
-            }
-        }
-    }
 
 //    private fun initListener(tokoId : String){
 //        val userId = userRepository.uid.toString()
